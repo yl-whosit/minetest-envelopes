@@ -61,10 +61,10 @@ minetest.register_craftitem("envelopes:envelope_opened", {
     groups = {not_in_creative_inventory = 1},
     on_use = function(itemstack, user, pointed_thing)
         local meta = itemstack:get_meta()
-        local sender = meta:get_string("sender")
-        local receiver = meta:get_string("receiver")
-        local text = meta:get_string("text")
-        local attn = meta:get_string("attn") or ""
+        local sender = core.formspec_escape(meta:get_string("sender"))
+        local receiver = core.formspec_escape(meta:get_string("receiver"))
+        local text = core.formspec_escape(meta:get_string("text"))
+        local attn = core.formspec_escape(meta:get_string("attn")) or ""
         local form =
             "size[5,5]" ..
             "label[0,0;A letter from " .. sender .. " to " .. receiver
